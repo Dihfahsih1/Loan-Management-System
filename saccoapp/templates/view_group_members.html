@@ -1,0 +1,89 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="container">
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                  <thead class="table-danger">
+                  <br>
+                  <tr>
+                      <td>Name</td>
+                      <td>Nationality</td>
+                      <td>Gender </td>
+                      <td>Contact</td>
+                      <td>Address</td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for member in members %}
+                      <tr>
+                      <td>{{ member.FullName }}</td>
+                      <td>{{ member.nationality }}</td>
+                      <td>{{ member.gender }}</td>
+                      <td>{{ member.contact }}</td>
+                      <td>{{ member.address }}</td>
+                     
+                      </tr>
+                  {% endfor %}
+
+                    <tr>
+                        <td>
+                            <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        Attach existing Member
+                                    </button>
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Select Member Account</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            {% load crispy_forms_tags %}
+
+                                            <form method="post" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                    {{ form|crispy }}
+                                                <button type="submit" class="btn btn-primary" name="button">Confirm</button>
+                                    
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                       </td>
+                    </tr>
+                       
+
+                  </tbody>
+        </table>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+</body>
+</html>

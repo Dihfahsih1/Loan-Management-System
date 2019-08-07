@@ -1,0 +1,93 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="container">
+                  
+    <h5 class="text-danger" align="center">{{ message }}</h5>
+
+    <div class="row">
+        <div class="col-md-6">
+                {% load crispy_forms_tags %}
+
+                <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <h5 class="text-warning"> Select/Search Account</h5>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                                {{ form|crispy }}
+                            <button type="submit" class="btn btn-primary" name="button">Search Details</button>
+                
+                            </form>
+                        </div>
+                    </div>
+               
+       {% if account %}
+       <table style="margin-top: 1rem" class="table table-bordered">
+            <thead class="table-danger">
+            <tr>
+                <td>Element</td>
+                <td>Value</td>
+                <td>Transaction</td>
+            </tr>
+            </thead>
+            
+            <tbody>
+                    <tr><td><strong>Name:</strong></td><td>{{account.group_name}}</td><td><a href="{% url 'groupAccountTransacting' account.pk %}" class="btn btn-primary bt-sm" role="button">Deposit/withdraw</a></td></tr>
+                    <tr><td><strong>Account No:</strong></td><td>{{ account.group_account_number }}</td><td><strong><h4>Bal: {{ account.account_balance }}</h4></strong></td></tr>
+                    <tr><td><strong>Area:</strong></td><td>{{ account.area_of_origin }}</td></tr>
+                    <tr><td><strong>District:</strong></td><td>{{ account.district }}</td></tr>
+                    <tr><td><strong>Group No:</strong></td><td>{{ account.group_id_number }}</td></tr>
+                    <tr><td><strong>Branch:</strong></td><td>{{ account.branch }}</td></tr>
+            </tbody>
+        </table>
+
+
+       {% endif %}
+
+        </div>
+
+        <div class="col-md-6">
+
+           {% if transactions %}
+
+            <h4 align="center">Account Transactions</h4>
+
+            <div class="table-responsive">
+                    <table class="table table-bordered">
+                            <thead class="table-danger">
+                            <br>
+                            <tr>
+                                <td>Date</td>
+                                <td>Trans Type</td>
+                                <td>Amount</td>
+                                <td>Slip Number</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {% for transaction in transactions %}
+                                <tr>
+                                <td>{{ transaction.date }}</td>
+                                <td>{{ transaction.transaction_type }}</td>
+                                <td>{{ transaction.amount }}</td>
+                                <td>{{ transaction.slip_number }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            </table>
+                          
+                </div>
+
+         {% endif %}
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

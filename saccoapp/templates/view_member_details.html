@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="container">
+    <h3 >Member account details</h3>
+    <h3 >{{ message }}</h3>
+
+
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered">
+              <thead class="table-danger">
+              <tr><td>Title</td><td>Info.</td></tr>
+              </thead>
+              <tbody>
+              <tr><td>Photo:</td><td><img src="{{ account.Photo.url }}" height="50" width="50"/></td></tr>
+              <tr><td>Account Type:</td><td>{{account.accountType}}</td></tr>
+              <tr><td>Account Classification:</td><td>{{ account.accountClassification }}</td></tr>
+              <tr><td>Account Number:</td><td>{{ account.AccountNumber }}</td></tr>
+              <tr><td>Sir Name:</td><td>{{ account.SurName }}</td></tr>
+              <tr><td>Middle Name:</td><td>{{ account.MiddleName }}</td></tr>
+              <tr><td>Other Name:</td><td>{{ account.OtherName }}</td></tr>
+              <tr><td>Full Name:</td><td>{{ account.FullName }}</td></tr>
+              <tr><td>Nationality:</td><td>{{ account.Nationality }}</td></tr>
+              <tr><td>ID Type:</td><td>{{ account.IDType }}</td></tr>
+              <tr><td>ID Number:</td><td>{{ account.IDNumber }}</td></tr>
+              <tr><td>Date of birth:</td><td>{{ account.DateOfBirth }}</td></tr>
+              <tr><td>Email Address:</td><td>{{ account.EmailAddress }}</td></tr>
+              <tr><td>Box Address:</td><td>{{ account.POBox }}</td></tr>
+              <tr><td>Residence:</td><td>{{ account.AreaOfResidence }}</td></tr>
+              <tr><td>District:</td><td>{{ account.District }}</td></tr>
+              <tr><td>Phone:</td><td>{{ account.RegisteredPhoneNumber }}</td></tr>
+              <tr><td>Next of kin:</td><td>{{ account.next_of_kin }}</td></tr>
+              <tr><td>Next of kin address:</td><td>{{ account.NextOfKinPhysicalAddress }}</td></tr>
+              <tr><td>Relationship:</td><td>{{ account.relationship }}</td></tr>
+              <tr><td>Signature:</td><td><img src="{{ account.Signature.url }}" height="50" width="50"/></td></tr>
+              <tr><td>Date of joining:</td><td>{{ account.DateOfJoining }}</td></tr>
+              <tr><td>Membership Fee:</td><td>{{ account.MembershipFee }}</td></tr>
+              <tr><td>Account Balance:</td><td>{{ account.UserBalance }}</td></tr>
+              <tr><td><a href="{% url 'view_members' %}" class="btn btn-primary bt-sm" role="button">Back</a></td></tr>
+              </tbody>
+             </table>
+        </div>
+  </div>
+
+   
+</div>
+
+{% endblock %}
+
+
+
+
+
+</body>
+</html>

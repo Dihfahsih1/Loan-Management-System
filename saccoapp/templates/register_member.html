@@ -1,0 +1,141 @@
+{% extends "index.html" %}
+
+
+{% block body %}
+<div class="container">
+    {% load crispy_forms_tags %}
+     <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-row" style="margin:5px;">
+    <div class="col-md-4 col-sm-6 col-xs-12 " >
+            <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="text-warning">Account Info</h5>
+                    <p>{{ form.accountType|as_crispy_field }}</p>
+                    <p>{{ form.accountClassification|as_crispy_field }}</p>
+                    <p>{{ form.AccountNumber|as_crispy_field }}</p>
+                    </div>
+            </div>
+
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="text-warning">Names</h5>
+                    <p>{{ form.SurName|as_crispy_field }}</p>
+                    <p>{{ form.MiddleName|as_crispy_field }}</p>
+                    <p>{{ form.OtherName|as_crispy_field }}</p>
+                    </div>
+            </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12" >
+            <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="text-warning">ID</h5>
+                    <p>{{ form.Nationality|as_crispy_field }}</p>
+                    <p>{{ form.IDType|as_crispy_field }}</p>
+                    <p>{{ form.IDNumber|as_crispy_field }}</p>
+                    </div>
+            </div>
+
+    </div>
+
+    </div>
+
+
+    <div class="form-row" style="margin:5px;">
+            <div class="col-md-4 col-sm-6 col-xs-6">
+                    <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                            <h5 class="text-warning">Contact Info</h5>
+                            <p>{{ form.EmailAddress|as_crispy_field }}</p>
+                            <p>{{ form.POBox|as_crispy_field }}</p>
+                            <p>{{ form.RegisteredPhoneNumber|as_crispy_field }}</p>
+
+                            </div>
+                    </div>
+        
+            </div>
+           
+        
+            <div class="col-md-4 col-sm-6 col-xs-6">
+                    <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                            <h5 class="text-warning">Next of kin</h5>
+                            <p>{{ form.next_of_kin|as_crispy_field }}</p>
+                            <p>{{ form.relationship|as_crispy_field }}</p>
+                            <p>{{ form.NextOfKinPhysicalAddress|as_crispy_field }}</p>
+
+                            </div>
+                    </div>
+        
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-6">
+                    <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                            <h5 class="text-warning">residence</h5>
+                            <p>{{ form.District|as_crispy_field }}</p>
+                            <p>{{ form.AreaOfResidence|as_crispy_field }}</p>
+                    </div>
+        
+            </div>
+        
+            </div>
+
+            </div>
+
+            <div class="form-row" style="margin:5px;">
+                    <div class="col-md-4 col-sm-6 col-xs-6">
+                            <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                    <h5 class="text-warning">Birth Info</h5>
+                                    <p>{{ form.DateOfBirth|as_crispy_field }}</p>
+                                    <p>{{ form.Photo|as_crispy_field }}</p>
+                                    <p><img src="{{ form.Photo.url }}"></p>
+                                    <p>{{ form.Signature|as_crispy_field }}</p>
+
+                                    </div>
+                            </div>
+                
+                    </div>
+                   
+                
+                    <div class="col-md-4 col-sm-6 col-xs-6">
+                            <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                            <h5 class="text-warning">Lastly</h5>
+                                            <p>{{ form.DateOfJoining|as_crispy_field }}</p>
+                                            <p>{{ form.MembershipFee|as_crispy_field }}</p>
+                                            <p>{{ form.UserBalance|as_crispy_field }}</p>
+
+                                    </div>
+                            </div>
+                
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-6">
+                            <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                            <h5 class="text-warning">Submit Data</h5>
+                                            <button type="submit" class="btn btn-primary" name="button"> Add Member </button>
+        
+                                    </div>
+                            </div>
+                
+                    </div>
+                
+                    </div>
+
+    </form>
+</div>
+
+{% endblock %}
+
+
+
+
+
+</body>
+</html>

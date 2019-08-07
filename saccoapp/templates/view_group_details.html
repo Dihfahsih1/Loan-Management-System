@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="container">
+    <h3 >Group account details</h3>
+    <h3 >{{ message }}</h3>
+
+
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered">
+              <thead class="table-danger">
+              <tr><td>Title</td><td>Info.</td></tr>
+              </thead>
+              <tbody>
+              <tr><td>Name:</td><td>{{account.group_name}}</td></tr>
+              <tr><td>Account No:</td><td>{{ account.group_account_number }}</td></tr>
+              <tr><td>Area:</td><td>{{ account.area_of_origin }}</td></tr>
+              <tr><td>District:</td><td>{{ account.district }}</td></tr>
+              <tr><td>Group No:</td><td>{{ account.group_id_number }}</td></tr>
+              <tr><td>Branch:</td><td>{{ account.branch }}</td></tr>
+              <tr><td>Balance:</td><td>{{ account.account_balance }}</td></tr>
+            
+              <tr><td><a href="{% url 'view_groups' %}" class="btn btn-primary bt-sm" role="button">Back</a></td></tr>
+              </tbody>
+             </table>
+        </div>
+  </div>
+
+
+   
+</div>
+
+{% endblock %}
+
+
+
+
+
+</body>
+</html>

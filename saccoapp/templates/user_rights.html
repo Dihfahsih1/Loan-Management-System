@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+
+  {% block body %}
+  <div class="container">
+    {% load crispy_forms_tags %}
+
+    <div class="row">
+        <div class="col-md-4">
+
+                <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <h5 class="text-warning">Select Rights</h5>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                                {{ form|crispy }}
+                            <button type="submit" class="btn btn-primary" name="button">Add</button>
+                            </form>
+
+                        </div>
+                </div>
+
+        </div>
+
+        <div class="col-md-7">
+            <h4>All Users & Rights</h4>
+            <table class="table table-hover">
+                  <thead class="table-danger">
+                  <br>
+                  <tr>
+                      <td>user</td>
+                      <td>Deposit</td>
+                      <td>Withdraw</td>
+                      <td>Register</td>
+                      <td>Loans</td>
+                      <td>user Balance</td>
+                  
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for user_right in userrights %}
+                      <tr>
+                      <td>{{ user_right.user.username }}</td>
+                      <td>{{ user_right.can_deposit }}</td>
+                      <td>{{ user_right.can_withdraw }}</td>
+                      <td>{{ user_right.can_register }}</td>
+                      <td>{{ user_right.can_handle_loans }}</td>
+                      <td>{{ user_right.can_send_balance }}</td>
+                   
+                      </tr>
+                  {% endfor %}
+                  
+
+                  </tbody>
+        </table>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

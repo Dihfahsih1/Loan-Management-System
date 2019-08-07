@@ -1,0 +1,7 @@
+pip install Pillow
+pip install twilio
+pip install --upgrade django-crispy-forms
+pip install django-session-timeout
+pip install xhtml2pdf
+
+

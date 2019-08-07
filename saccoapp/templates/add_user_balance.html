@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+  {% block body %}
+  <div class="container">
+          <h3>Add Balance to user</h3>
+  <h4 align="center">{{ message }}</h4>     
+    {% load crispy_forms_tags %}
+
+    <div class="form-row" style="margin:5px;">
+                <div class="col-md-4 col-sm-6 col-xs-12 " >
+                                <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                                <form method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {{ form|crispy }}
+                                        <button type="submit" class="btn btn-primary" name="button"> Add</button>
+                                </form>
+                                </div>
+                        </div>
+                               
+                </div>
+        </div>
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+  {% block body %}
+  <div class="container">
+    {% load crispy_forms_tags %}
+
+    <div class="row">
+        <div class="col-md-6">
+             <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                {{ form|crispy }}
+            <button type="submit" class="btn btn-primary" name="button"> Add Expense </button>
+
+            </form>
+
+        </div>
+
+        <div class="col-md-5">
+            <h4>Available Prepaid Expenses</h4>
+            <table class="table table-hover">
+                  <thead class="table-danger">
+                  <br>
+                  <tr>
+                      <td>id</td>
+                      <td>Item</td>
+                      <td>Amount</td>
+                      <td>Payment Method</td>
+                      <td>Details</td>
+                  
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in items %}
+                      <tr>
+                      <td>{{ item.pk }}</td>
+                      <td>{{ item.expense_item }}</td>
+                      <td>{{ item.amount_paid }}</td>
+                      <td>{{ item.transaction_type }}</td>
+                      <td>{{ item.transaction_details }}</td>
+                   
+                      </tr>
+                  {% endfor %}
+
+                  </tbody>
+        </table>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

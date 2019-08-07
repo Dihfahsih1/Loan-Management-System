@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="container">
+    <h3 align='center'>Transaction details</h3>
+    <h3 align="center">{{ message }}</h3>
+
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered">
+              <thead class="table-danger">
+              <tr><td>Title</td><td>Info.</td><td>Print</td><td>Finish</td></tr>
+              </thead>
+              <tbody>
+                  <tr><td>Date:</td><td>{{transaction.date}}</td><td><a href="{% url 'print_group_transaction' account.id %}" class="btn btn-secondary bt-sm" target="_blank" role="button">Print</a></td><td><a href="{% url 'index' %}" class="btn btn-secondary bt-sm" role="button">Finish</a></td></tr>
+                  <tr><td>Account No:</td><td>{{account.group_account_number}}</td></tr>
+                  <tr><td>Account Name:</td><td>{{account.group_name}}</td></tr>
+                  <tr><td>TransactionType:</td><td>{{ transaction.transaction_type }}</td></tr>
+                  <tr><td>Amount:</td><td>{{ transaction.amount }}</td></tr>
+                  <tr><td>Transacted by:</td><td>{{ transaction.transacted_by }}</td></tr>
+                  <tr><td>Slip No:</td><td>{{ transaction.slip_number }}</td></tr>
+                  <tr><td>Teller :</td><td>{{ transaction.transacting_staff }}</td></tr>
+                  <tr><td>Branch :</td><td>{{ transaction.branch }}</td></tr>
+                  <tr><td>Charges :</td><td>{{ transaction.charges }}</td></tr>
+                  <tr><td>Computer :</td><td>{{ transaction.computer }}</td></tr>
+
+                </tbody>
+             </table>
+        </div>
+  </div>
+
+
+   
+</div>
+
+{% endblock %}
+
+
+
+
+
+</body>
+</html>

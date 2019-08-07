@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+
+
+  {% block body %}
+  <div class="container">
+    {% load crispy_forms_tags %}
+
+    <div class="row">
+        <div class="col-md-6">
+             <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                {{ form|crispy }}
+            <button type="submit" class="btn btn-primary" name="button"> Add Guarantor </button>
+
+            </form>
+
+        </div>
+
+        <div class="col-md-5">
+            <h4>Available Loan Consents</h4>
+            <table class="table table-hover">
+                  <thead class="table-danger">
+                  <br>
+                  <tr>
+                      <td>id</td>
+                      <td>Consent Name</td>
+                      <td>Loan attachment</td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in items %}
+                      <tr>
+                      <td>{{ item.pk }}</td>
+                      <td>{{ item.consent_name }}</td>
+                      <td>{{ item.loan_attached_to }}</td>
+
+                      </tr>
+                  {% endfor %}
+
+                  </tbody>
+        </table>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

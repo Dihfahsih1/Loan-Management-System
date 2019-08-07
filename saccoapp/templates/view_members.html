@@ -1,0 +1,82 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="container">
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                  <thead class="table-danger">
+                  <br>
+                  <tr>
+                      <td>id</td>
+                      <td>Account Type</td>
+                      <td>Account Classification</td>
+                      <td>Account Number</td>
+                      <td>Full Name</td>
+                      <td>Balance</td>
+                      <td>Account Status</td>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in items %}
+                      <tr>
+                      <td>{{ item.pk }}</td>
+                      <td>{{ item.accountType }}</td>
+                      <td>{{ item.accountClassification }}</td>
+                      <td>{{ item.AccountNumber }}</td>
+                      <td>{{ item.FullName }}</td>
+                      <td>{{ item.UserBalance }}</td>
+                      <td><a class="btn btn-primary bt-sm" role="button" href="{% url 'view_member_details' item.pk %}">View</a></td>
+                     
+                      </tr>
+                  {% endfor %}
+
+
+                  </tbody>
+        </table>
+
+         <div class="pagination">
+                <span class="step-links">
+                    {% if items.has_previous %}
+                        <a class="btn btn-primary bt-sm" role="button" href="?page=1">&laquo; first</a>
+                        <a class="btn btn-primary bt-sm" role="button" href="?page={{ items.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ items.number }} of {{ items.paginator.num_pages }}.
+                    </span>
+
+                    {% if items.has_next %}
+                        <a class="btn btn-primary bt-sm" role="button" href="?page={{ items.next_page_number }}">next</a>
+                        <a class="btn btn-primary bt-sm" role="button" href="?page={{ items.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+
+                    <a class="btn btn-success bt-sm" role="button" href="{% url 'register_member'  %}">Add Member</a>
+
+                    <a class="btn btn-primary bt-sm" role="button" href="#">pdf</a>
+                    <a class="btn btn-primary bt-sm" role="button" href="#">Excel</a>
+                    <a class="btn btn-primary bt-sm" role="button" href="#">Csv</a>
+
+                </span>
+              </div>
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+</body>
+</html>

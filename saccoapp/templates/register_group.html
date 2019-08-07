@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+
+
+  {% block body %}
+  <div class="container">
+        {% load crispy_forms_tags %}
+
+
+             <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+
+            <div class="form-row" style="margin:5px;">
+                    <div class="col-md-4 col-sm-6 col-xs-12 " >
+                            <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                    <h5 class="text-warning">Info</h5>
+                                    <p>{{ form.group_name|as_crispy_field }}</p>
+                                    <p>{{ form.district|as_crispy_field }}</p>
+                                    <p>{{ form.area_of_origin|as_crispy_field }}</p>
+                                    <p>{{ form.group_id_number|as_crispy_field }}</p>
+
+                                    </div>
+                            </div>
+                
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                    <h5 class="text-warning">Account</h5>
+                                    <p>{{ form.group_account_number|as_crispy_field }}</p>
+                                    <p>{{ form.account_balance|as_crispy_field }}</p>
+                                    <p>{{ form.branch|as_crispy_field }}</p>
+                                    <p><button type="submit" class="btn btn-primary" name="button"> Add Group </button></p>
+
+                                    </div>
+                            </div>
+                
+                    </div>
+                
+                    </div>
+
+
+
+            </form>
+
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

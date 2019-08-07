@@ -1,0 +1,122 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="container">
+                  
+    <h5 class="text-danger" align="center">{{ message }}</h5>
+
+    <div class="row">
+        <div class="col-md-6">
+                {% load crispy_forms_tags %}
+
+                <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <h5 class="text-warning"> Select/Search Account</h5>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                                {{ form|crispy }}
+                            <button type="submit" class="btn btn-primary" name="button">Search Details</button>
+                
+                            </form>
+
+                        </div>
+                    </div>
+
+               
+               
+       {% if account %}
+       <table style="margin-top: 1rem" class="table table-bordered">
+            <thead class="table-danger">
+            <tr>
+                <td>Element</td>
+                <td>Value</td>
+                <td>Transaction</td>
+            </tr>
+            </thead>
+            
+            <tbody>
+                    <tr><td><strong>Photo:</strong></td><td><img src="{{ account.Photo.url }}" height="50" width="50"/></td><td><a href="{% url 'singleAccountTransacting' account.pk %}" class="btn btn-primary bt-sm" role="button">Deposit/withdraw</a></td></tr>
+                    <tr><td><strong>Account Type:</strong></td><td>{{account.accountType}}</td><td><strong><h4>Bal: {{ account.UserBalance }}</h4></strong></td></tr>
+                    <tr><td><strong>Account Classification:</strong></td><td>{{ account.accountClassification }}</td></tr>
+                    <tr><td><strong>Account Number:</strong></td><td>{{ account.AccountNumber }}</td></tr>
+                    <tr><td><strong>Sir Name:</strong></td><td>{{ account.SurName }}</td></tr>
+                    <tr><td><strong>Middle Name:</strong></td><td>{{ account.MiddleName }}</td></tr>
+                    <tr><td><strong>Other Name:</strong></td><td>{{ account.OtherName }}</td></tr>
+                    <tr><td><strong>Full Name:</strong></td><td>{{ account.FullName }}</td></tr>
+                    <tr><td><strong>Nationality:</strong></td><td>{{ account.Nationality }}</td></tr>
+                    <tr><td><strong>ID Type:</strong></td><td>{{ account.IDType }}</td></tr>
+                    <tr><td><strong>ID Number:</strong></td><td>{{ account.IDNumber }}</td></tr>
+                    <tr><td><strong>Date of birth:</strong></td><td>{{ account.DateOfBirth }}</td></tr>
+                    <tr><td><strong>Email Address:</strong></td><td>{{ account.EmailAddress }}</td></tr>
+                    <tr><td><strong>Box Address:</strong></td><td>{{ account.POBox }}</td></tr>
+                    <tr><td><strong>Residence:</strong></td><td>{{ account.AreaOfResidence }}</td></tr>
+                    <tr><td><strong>District:</strong></td><td>{{ account.District }}</td></tr>
+                    <tr><td><strong>Phone:</strong></td><td>{{ account.RegisteredPhoneNumber }}</td></tr>
+                    <tr><td><strong>Next of kin:</strong></td><td>{{ account.next_of_kin }}</td></tr>
+                    <tr><td><strong>Next of kin address:</strong></td><td>{{ account.NextOfKinPhysicalAddress }}</td></tr>
+                    <tr><td><strong>Relationship:</strong></td><td>{{ account.relationship }}</td></tr>
+                    <tr><td><strong>Signature:</strong></td><td><img src="{{ account.Signature.url }}" height="50" width="50"/></td></tr>
+                    <tr><td><strong>Date of joining:</strong></td><td>{{ account.DateOfJoining }}</td></tr>
+                    <tr><td><strong>Membership Fee:</strong></td><td>{{ account.MembershipFee }}</td></tr>
+          
+            </tbody>
+        </table>
+
+       {% endif %}   
+
+        </div>
+
+        <div class="col-md-6">
+
+           {% if transactions %}
+
+            <h4 align="center">Account Transactions</h4>
+
+            <div class="table-responsive">
+                    <table class="table table-bordered">
+                            <thead class="table-danger">
+                            <br>
+                            <tr>
+                                <td>Date</td>
+                                <td>Trans Type</td>
+                                <td>Amount</td>
+                                <td>Slip Number</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                              {% for transaction in transactions %}
+                                <tr>
+                                <td>{{ transaction.date }}</td>
+                                <td>{{ transaction.transaction_type }}</td>
+                                <td>{{ transaction.amount }}</td>
+                                <td>{{ transaction.slip_number }}</td>
+                               
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            </table>
+                          
+                </div>
+
+         {% endif %}
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+</body>
+</html>
