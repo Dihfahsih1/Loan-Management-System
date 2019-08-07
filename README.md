@@ -1,14 +1,6 @@
 # pi-django
 
 # `Developer guide.`
-All work start on the MVP branch.
-
-clone the repo. `git clone https://github.com/ruyonga/pi-django.git`.
-
-Enter the `pi-django` folder `cd pi-django`
-
-From you`git fetch origin`
-
 Switch to MVP branch `git checkout mvp`
 
 Install environment & dependencies.
