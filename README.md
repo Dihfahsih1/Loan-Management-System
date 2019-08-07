@@ -57,6 +57,3 @@ git commit -m "What i was working on"
 
 git push orign  name-of-ur-branch if its the first commit `git push -u orign  name-of-ur-branch`
 ````
-When your done working on the branch create a ``PR`` from your branch to  `MVP`
-
-Assign `Daniel Ruyonga` the `PR`
